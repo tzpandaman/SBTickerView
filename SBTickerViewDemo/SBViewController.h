@@ -26,5 +26,10 @@
 @property (nonatomic, strong) IBOutlet UIView *frontView;
 @property (nonatomic, strong) IBOutlet UIView *backView;
 
+@property (nonatomic) NSInteger hours;
+@property (nonatomic) NSInteger minutes;
+@property (nonatomic) NSInteger seconds;
+
+
 - (IBAction)tick:(id)sender;
 @end
