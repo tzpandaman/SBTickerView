@@ -28,6 +28,7 @@
 @synthesize minutes;
 @synthesize seconds;
 
+@synthesize timer;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -51,7 +52,11 @@
     //RX calls the function called "Count down" every second
     NSLog(@"here at count down");
 
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
+    //RX sets the timer to true and it will be false when hour is wual to 0
+    self.timer = TRUE;
+    if(self.timer){
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
+    }
     
     //Init
     _currentClock = @"000000";//RX if this is set to 000000 then the ticker view starts with curretn date
@@ -151,11 +156,6 @@
                 break;
         }
     }
-
-//    for (SBTickerView *ticker in _clockTickers){
-//        NSLog(@"Not Sure");
-//        [ticker setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
-//    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -187,8 +187,13 @@
             if (self.hours != 0) {
                 self.hours --;
             } else {
+                
+                //** This is the end of the timer: Do something AND stop calling this function **//
+                
+                self.timer = FALSE;
+                
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Times up baby" message:@"Time!! Time!!" delegate:self cancelButtonTitle:Nil otherButtonTitles:@"cancel", nil];
-                alert 
+                [alert show];
             }
         }
     }

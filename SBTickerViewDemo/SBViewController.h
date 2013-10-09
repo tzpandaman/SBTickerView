@@ -30,6 +30,7 @@
 @property (nonatomic) NSInteger minutes;
 @property (nonatomic) NSInteger seconds;
 
+@property (nonatomic) BOOL timer;
 
 - (IBAction)tick:(id)sender;
 @end
