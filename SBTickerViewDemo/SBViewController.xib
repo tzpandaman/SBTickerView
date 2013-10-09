@@ -72,28 +72,34 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="16" customClass="SBTickerView" colorLabel="IBBuiltInLabel-Yellow">
-                    <rect key="frame" x="238" y="22" width="54" height="74"/>
+                    <rect key="frame" x="283" y="22" width="31" height="43"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="23" customClass="SBTickerView">
-                    <rect key="frame" x="294" y="22" width="53" height="74"/>
+                    <rect key="frame" x="316" y="22" width="31" height="43"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="24" customClass="SBTickerView">
-                    <rect key="frame" x="119" y="103" width="55" height="76"/>
+                    <rect key="frame" x="73" y="22" width="31" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="25" customClass="SBTickerView">
-                    <rect key="frame" x="176" y="103" width="57" height="76"/>
+                    <rect key="frame" x="106" y="22" width="33" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="26" customClass="SBTickerView">
-                    <rect key="frame" x="1" y="22" width="54" height="76"/>
+                    <rect key="frame" x="145" y="22" width="30" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="27" customClass="SBTickerView">
-                    <rect key="frame" x="57" y="22" width="54" height="76"/>
+                    <rect key="frame" x="177" y="22" width="31" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="41">
                     <rect key="frame" x="105" y="366" width="139" height="37"/>
@@ -106,20 +112,24 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="rLR-hP-475" customClass="SBTickerView" colorLabel="IBBuiltInLabel-Yellow">
-                    <rect key="frame" x="118" y="22" width="56" height="75"/>
+                    <rect key="frame" x="213" y="22" width="32" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Gc8-gM-Pcw" customClass="SBTickerView">
-                    <rect key="frame" x="176" y="22" width="57" height="76"/>
+                    <rect key="frame" x="246" y="22" width="33" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="LaA-Jd-PGm" customClass="SBTickerView" colorLabel="IBBuiltInLabel-Yellow">
-                    <rect key="frame" x="0.0" y="103" width="56" height="76"/>
+                    <rect key="frame" x="1" y="22" width="33" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="vgg-jL-1Zh" customClass="SBTickerView">
-                    <rect key="frame" x="58" y="103" width="56" height="76"/>
+                    <rect key="frame" x="36" y="22" width="32" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
