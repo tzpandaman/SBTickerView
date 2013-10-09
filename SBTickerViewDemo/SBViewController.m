@@ -54,12 +54,8 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
     
     //Init
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"HHmmss"];
-//    NSDate *date = [NSDate date];
-//    NSString *currentDate = [formatter stringFromDate:date];
     _currentClock = @"000000";//RX if this is set to 000000 then the ticker view starts with curretn date
-//    NSLog(@"current date: %@",currentDate);
+
     _clockTickers = [NSArray arrayWithObjects:
                      clockTickerViewHour1,
                      clockTickerViewHour2,
@@ -74,7 +70,7 @@
     
     
     //RX The Start Date
-    NSDate *pastDate = [formatter dateFromString:@"2013-06-05 104325"];
+    NSDate *pastDate = [formatter dateFromString:@"2013-06-05 104315"];
     //RX The End Date
     NSDate *recentDate = [formatter dateFromString:@"2013-10-06 201020"];
     
@@ -95,21 +91,24 @@
     NSString *hourStr = [NSString stringWithFormat:@"%d", self.hours];
     NSString *minuteStr = [NSString stringWithFormat:@"%d", self.minutes];
     NSString *secondStr = [NSString stringWithFormat:@"%d", self.seconds];
-    NSLog(@"seconLast %@",secondStr);
+    NSLog(@"hour %i",hourStr.length);
+    NSLog(@"minute %i",minuteStr.length);
+    NSLog(@"second %i",secondStr.length);
     
     for(int i = 0;i < _clockTickers.count;i++){
         switch (i) {
             case 0:
                 if ([hourStr length] == 2){
-                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];  
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
                     NSLog(@"2");
                 } else {
                     [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];  
                      NSLog(@"1");
                 }
+                break;
             case 1:
                 if ([hourStr length] == 2){
-                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]]; 
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
                      NSLog(@"2");
                 } else {
                     [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:hourStr fontSize:45.]];  
@@ -134,18 +133,19 @@
 
                 break;
             case 4:
-                if (minuteStr.length == 2) {
-                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
+                if (secondStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
                 } else {
                     [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
                 }
                 break;
             case 5:
-                if (minuteStr.length == 2) {
-                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
+                if (secondStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
                 } else {
                     [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:secondStr fontSize:45.]];
-                }                break;
+                }
+                break;
                 
             default:
                 break;
@@ -176,15 +176,20 @@
 -(void)countDown:(id)sender{
     NSLog(@"ticking");
     
-    if (self.seconds != 0){
+    if (self.seconds != 0) {
         self.seconds--;
     } else {
         self.seconds = 60;
-        if (self.minutes != 0){
+        if (self.minutes != 0) {
             self.minutes--;
         } else {
             self.minutes = 60;
-            self.hours --;
+            if (self.hours != 0) {
+                self.hours --;
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Times up baby" message:@"Time!! Time!!" delegate:self cancelButtonTitle:Nil otherButtonTitles:@"cancel", nil];
+                alert 
+            }
         }
     }
     
@@ -194,54 +199,58 @@
     NSString *secondStr = [NSString stringWithFormat:@"%d", self.seconds];
 
     for(int i = 0;i < _clockTickers.count;i++){
-               switch (i) {
-                   case 0:
-                       if ([hourStr length] == 2){
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];  
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];  
-                       }
-                   case 1:
-                       if ([hourStr length] == 2){
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];  
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:hourStr fontSize:45.]];  
-                       }
-                       break;
-                   case 2:
-                       if (minuteStr.length == 2) {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[minuteStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
-                       }
-                       break;
-                   case 3:
-                       if (minuteStr.length == 2) {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[minuteStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:minuteStr fontSize:45.]];
-                       }
-                       
-                       break;
-                   case 4:
-                       if (minuteStr.length == 2) {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
-                           NSLog(@"2 Main");
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
-                           NSLog(@"1 Main");
-                       }
-                       break;
-                   case 5:
-                       if (minuteStr.length == 2) {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
-                           NSLog(@"2");
-                       } else {
-                           [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:secondStr fontSize:45.]];
-                           NSLog(@"1");
-                       }                break;
-                       
-                   default:
+        switch (i) {
+            case 0:
+                if ([hourStr length] == 2){
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
+                    NSLog(@"2");
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
+                    NSLog(@"1");
+                }
+                break;
+            case 1:
+                if ([hourStr length] == 2){
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[hourStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
+                    NSLog(@"2");
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:hourStr fontSize:45.]];
+                    NSLog(@"2");
+                }
+                break;
+            case 2:
+                if (minuteStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[minuteStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
+                    NSLog(@"2");
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
+                    NSLog(@"1");
+                }
+                break;
+            case 3:
+                if (minuteStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[minuteStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:minuteStr fontSize:45.]];
+                }
+                
+                break;
+            case 4:
+                if (secondStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(0, 1)] fontSize:45.]];
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
+                }
+                break;
+            case 5:
+                if (secondStr.length == 2) {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:[secondStr substringWithRange:NSMakeRange(1, 1)] fontSize:45.]];
+                } else {
+                    [[_clockTickers objectAtIndex:i] setFrontView:[SBTickView tickViewWithTitle:secondStr fontSize:45.]];
+                }
+                break;
+                
+            default:
                 break;
         }
     }
